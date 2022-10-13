@@ -23,11 +23,17 @@ class GeeksForm(forms.ModelForm):
             "description"
         ]
 
+# class GeeksForm(forms.Form):
+#     title = forms.CharField()
+#     description = forms.CharField()
+#     views = forms.IntegerField()
+#     available = forms.BooleanField()
+
 
 # creating a django form
 class MyForm(forms.Form):
     title = forms.CharField()
     description = forms.CharField()
-    views = forms.IntegerField()
-    available = forms.BooleanField()
-    date = forms.DateField(widget=forms.SelectDateWidget)
+    # views = forms.IntegerField()
+    # available = forms.BooleanField()
+    # date = forms.DateField(widget=forms.SelectDateWidget)

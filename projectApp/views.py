@@ -14,6 +14,7 @@ from .forms import MyForm
 from .models import GeeksModel
 import datetime
 from django.forms import formset_factory
+from django.forms import modelformset_factory
 
 
 def index(request):
@@ -29,6 +30,21 @@ def home_view(request):
         form.save()
     context['form'] = form
     return render(request, "home.html", context)
+
+# def home_view(request):
+#     context ={}
+#     context['form']= InputForm()
+#     return render(request, "home.html", context)
+
+# def home_view(request):
+#     context={}
+#     form = MyForm(request.POST or None, request.FILES or None)
+#     # check if form data is valid
+#     if form.is_valid():
+#         # save the form data to model
+#         form.save()
+#     context['form'] = form
+#     return render(request, "home.html", context)
 
 
 def formset_view(request):
@@ -52,7 +68,7 @@ def model_view(request):
     context = {}
 
     # creating a formset
-    geeksFormSet = formset_factory(GeeksForm, fields=['title', 'description'], extra=2)
+    geeksFormSet = modelformset_factory(GeeksModel, fields=['title', 'description'], extra=2)
     formset = geeksFormSet(request.POST or None)
 
     # print formset data if it is valid
@@ -70,7 +86,7 @@ def geeks_view(request):
         "data": "CFZ is the best!",
         "list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     }
-    return render(request, "projectApp.html", context)
+    return render(request, "geeks.html", context)
 
 
 # create a function
